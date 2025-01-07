@@ -118,3 +118,35 @@ tbody tr:nth-child(odd) {
   width: 80vw;
   table-layout: fixed;
 }
+
+
+.links {
+  display: block;
+  margin: 10px;
+}
+
+.links-container {
+  display: flex;
+  width: 100%;
+  float: left;
+}
+
+.card {
+  width: 200px;
+  background-color: #333333;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.card img {
+  object-fit: cover;
+  width: 100%;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
