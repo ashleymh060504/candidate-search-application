@@ -15,6 +15,9 @@ const CandidateSearch = () => {
     bio: ''
   });
 
+  // const currentNumber = 0;
+  const [currentNumber, setCurrentNumber] = useState<number>(0);
+
 
   useEffect(() => {
     async function getUsers() {
@@ -27,13 +30,28 @@ const CandidateSearch = () => {
 
   useEffect(() => {
     async function getUser() {
-      const data = await searchGithubUser(candidates[0].login);
+      const data = await searchGithubUser(candidates[currentNumber].login);
       console.log(data);
       setCurrentCandidate(data)
     }
     getUser()
-  }, [candidates])
+  }, [candidates, currentNumber])
 
+  const nextCandidate = () => {
+    console.log('next candidate')
+    setCurrentNumber(currentNumber + 1)
+  }
+  const saveCandidate = () => {
+    console.log('save candidate')
+
+    const savedCandidates = JSON.parse(localStorage.getItem('savedCandidates') || '[]' );
+
+    savedCandidates.push(currentCandidate);
+
+    localStorage.setItem('savedCandidates', JSON.stringify(savedCandidates))
+
+    nextCandidate();
+  }
 
   return (
     <div className="main-container">
@@ -49,8 +67,8 @@ const CandidateSearch = () => {
       </div>
 
       <div>
-        <button>Minus</button>
-        <button>Plus</button>
+        <button onClick={nextCandidate}>Next</button>
+        <button onClick={saveCandidate}>Save</button>
       </div>
     </div>
   )

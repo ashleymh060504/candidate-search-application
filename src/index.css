@@ -150,3 +150,7 @@ tbody tr:nth-child(odd) {
   align-items: center;
   width: 100%;
 }
+/* Created with Joem for the avatar_url column  */
+td > img {
+  width: 80px;
+}
