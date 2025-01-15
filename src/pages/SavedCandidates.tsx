@@ -37,7 +37,7 @@ const SavedCandidates = () => {
           {
             savedCandidates.map((candidate) => {
               return (
-                <tr key={candidate.login}>
+                <tr className="card" key={candidate.login}>
                   <td><img src={candidate?.avatar_url ? candidate.avatar_url : "https://placehold.co/400"} alt="placeholder" /></td>
                   <td>{candidate.login}</td>
                   <td>{candidate?.location ? candidate.location : "(No location provided)"}</td>

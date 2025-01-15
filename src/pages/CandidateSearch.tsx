@@ -58,7 +58,7 @@ const CandidateSearch = () => {
       <h1>Candidate Search</h1>
 
       <div className="card">
-        <img src={currentCandidate?.avatar_url} alt="placeholder" />
+        <img src={currentCandidate?.avatar_url ? currentCandidate.avatar_url : "https://placehold.co/400"} alt="placeholder" />
         <h2>{currentCandidate?.login}</h2>
         <p>Location: {currentCandidate?.location ? currentCandidate?.location : "(No location provided)"}</p>
         <p>Email: {currentCandidate?.email ? currentCandidate?.email : "(No email provided)"}</p>
