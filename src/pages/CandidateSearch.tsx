@@ -4,7 +4,7 @@ import Candidate from '../interfaces/Candidate.interface';
 
 const CandidateSearch = () => {
 
-  const [candidates, setCandidates] = useState<any[]>([]);
+  const [candidates, setCandidates] = useState<Candidate[]>([]);
 
   const [currentCandidate, setCurrentCandidate] = useState<Candidate>({
     avatar_url: '',

@@ -1,22 +1,20 @@
 import { useState, useEffect } from "react";
+import Candidate from "../interfaces/Candidate.interface";
 
 
 const SavedCandidates = () => {
 
-  const [savedCandidates, setSavedCandidates] = useState([]);
+  const [savedCandidates, setSavedCandidates] = useState<Candidate[]>([]);
 
   useEffect(() => {
-    const savedCandidates = JSON.parse(localStorage.getItem('savedCandidates') || '[]');
-    setSavedCandidates(savedCandidates);
-  }, [])
+    const storedCandidates = JSON.parse(localStorage.getItem('savedCandidates') || '[]');
+    setSavedCandidates(storedCandidates);
+  }, []);
 
-//Work on this function next. Review CandidateSearch.tsx for guidance.
-  function rejectCandidate() {
-    const savedCandidates = JSON.parse(localStorage.getItem('savedCandidates') || '[]');
-    let rejectedCandidate = savedCandidates.indexOf(savedCandidates);
-    savedCandidates.splice(rejectedCandidate);
-    localStorage.setItem('savedCandidates', JSON.stringify(savedCandidates));
-    setSavedCandidates(savedCandidates);
+
+  function rejectCandidate(login: string) {
+    setSavedCandidates(savedCandidates.filter((candidate: Candidate) => candidate.login !== login));
+    localStorage.setItem('savedCandidates', JSON.stringify(savedCandidates.filter((candidate: Candidate) => candidate.login !== login)));
   }
 
   return (
@@ -37,16 +35,16 @@ const SavedCandidates = () => {
         </thead>
         <tbody>
           {
-            savedCandidates.map((candidate, index) => {
+            savedCandidates.map((candidate) => {
               return (
-                <tr key={index}>
+                <tr key={candidate.login}>
                   <td><img src={candidate?.avatar_url ? candidate.avatar_url : "https://placehold.co/400"} alt="placeholder" /></td>
                   <td>{candidate.login}</td>
                   <td>{candidate?.location ? candidate.location : "(No location provided)"}</td>
                   <td>{candidate?.email ? candidate.email : "(No email provided)"}</td>
                   <td>{candidate?.company ? candidate.company : "(No company provided)"}</td>
                   <td>{candidate?.bio ? candidate.bio : "(No bio provided)"}</td>
-                  <td><button onClick={rejectCandidate}>Reject</button></td>
+                  <td><button onClick={() => rejectCandidate(candidate.login)}>Reject</button></td>
                 </tr>
               )
             })
