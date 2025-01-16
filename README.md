@@ -1,33 +1,28 @@
-# React + TypeScript + Vite
+# CANDIDATE SEARCH APPLICATION
+##
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+   ![Version](https://img.shields.io/badge/Version-1.0.0-blue)
 
-Currently, two official plugins are available:
 
-* [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md), which uses [Babel](https://babeljs.io/) for Fast Refresh
-* [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc), which uses [SWC](https://swc.rs/) for Fast Refresh
+## Description
 
-## Expanding the ESLint configuration
 
-If you're developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+This web application pulls 30 GitHub users at random to be reviewed and either saved or passed on. It currently includes 2 pages, which are the Candidate Search page and the Saved Candidates page where all of the saved candidates can be reviewed, or removed. Included in the information about each candidate are:
+1. Name
+2. Username
+3. Location
+4. Avatar
+5. Email address
+6. html_url
+7. Company
 
-* Configure the top-level `parserOptions` property as follows:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Installation
 
-* Replace `plugin:@typescript-eslint/recommended` with `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`.
-* Optionally, add `plugin:@typescript-eslint/stylistic-type-checked`.
-* Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` and `plugin:react/jsx-runtime` to the `extends` list.
+In the Terminal of Visual Studio Code, enter "npm install" in order to install all of the dependencies. 
 
----
-© 2024 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+## Usage
+
+1. To start the application, enter "npm run dev" in the terminal.
+2. From the terminal, use the local link provided by Vite, to view the application in your browser.
+3. The application can also be accessed using the following Render link: 
