@@ -18,6 +18,7 @@ const CandidateSearch = () => {
   // const currentNumber = 0;
   const [currentNumber, setCurrentNumber] = useState<number>(0);
 
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     async function getUsers() {
@@ -38,9 +39,14 @@ const CandidateSearch = () => {
   }, [candidates, currentNumber])
 
   const nextCandidate = () => {
-    console.log('next candidate')
-    setCurrentNumber(currentNumber + 1)
+    if (currentNumber === candidates.length - 1) {
+      setMessage('You have reached the last candidate.');
+    } else {
+      setMessage(''); 
+      setCurrentNumber(currentNumber + 1);
+    }
   }
+
   const saveCandidate = () => {
     console.log('save candidate')
 
@@ -67,9 +73,10 @@ const CandidateSearch = () => {
       </div>
 
       <div>
-        <button onClick={nextCandidate}>Next</button>
-        <button onClick={saveCandidate}>Save</button>
+        <button onClick={nextCandidate}>-</button>
+        <button onClick={saveCandidate}>+</button>
       </div>
+      {message && <p>{message}</p>}
     </div>
   )
 };

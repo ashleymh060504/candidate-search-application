@@ -6,21 +6,29 @@ const SavedCandidates = () => {
 
   const [savedCandidates, setSavedCandidates] = useState<Candidate[]>([]);
 
+  const [message, setMessage] = useState('');
+
   useEffect(() => {
     const storedCandidates = JSON.parse(localStorage.getItem('savedCandidates') || '[]');
-    setSavedCandidates(storedCandidates);
-  }, []);
+    if (storedCandidates.length === 0) {
+      setMessage('No saved candidates.');
+    } else {
+      setSavedCandidates(storedCandidates);
+    }
+  }, []); 
 
 
   function rejectCandidate(login: string) {
-    setSavedCandidates(savedCandidates.filter((candidate: Candidate) => candidate.login !== login));
-    localStorage.setItem('savedCandidates', JSON.stringify(savedCandidates.filter((candidate: Candidate) => candidate.login !== login)));
+    const updatedCandidates = savedCandidates.filter((candidate: Candidate) => candidate.login !== login);
+    setSavedCandidates(updatedCandidates);
+    localStorage.setItem('savedCandidates', JSON.stringify(updatedCandidates));
   }
+
 
   return (
     <>
       <h1>Potential Candidates</h1>
-
+      {message && <p className= "message">{message}</p>}
       <table className="table">
         <thead>
           <tr>
@@ -52,9 +60,6 @@ const SavedCandidates = () => {
 
         </tbody>
       </table>
-
-
-    
 
     </>
   );
